@@ -1,0 +1,40 @@
+long dur,dur1;
+int dis,dis1;
+void setup() {
+pinMode(3,OUTPUT);//buzzer
+pinMode(4,OUTPUT);//sensor1
+pinMode(5,INPUT);//sensor1
+pinMode(3,OUTPUT);//buzzer
+pinMode(8,OUTPUT);//sensor2
+pinMode(9,INPUT);//sensor2
+}
+void loop() {
+  digitalWrite(4,LOW);
+  Serial.begin(9600);
+  delayMicroseconds(2);
+  digitalWrite(4,HIGH);
+  delayMicroseconds(5);
+  digitalWrite(4,LOW);
+  dur=pulseIn(5,HIGH); 
+
+  digitalWrite(8,LOW);
+  delayMicroseconds(2);
+  digitalWrite(8,HIGH);
+  delayMicroseconds(2);
+  digitalWrite(8,LOW);
+  dur1=pulseIn(9,HIGH);
+
+  dis=(dur/2)/20;//checking the distance
+  if(dis<100){
+    digitalWrite(3,HIGH);
+  }
+  else{
+    digitalWrite(3,LOW);}delay(500);
+
+    dis1=(dur1/2)/20;
+  if(dis1<100){
+    digitalWrite(3,HIGH);
+  }
+  else{
+    digitalWrite(3,LOW);}delay(500);
+  }
